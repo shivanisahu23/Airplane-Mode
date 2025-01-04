@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{shop}-{###}",
+ "creation": "2024-11-08 17:41:47.526383",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shop",
+  "tenant",
+  "start_date",
+  "expire_date",
+  "rent_amount",
+  "auto_renewal_option"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop",
+   "fieldtype": "Link",
+   "label": "Shop",
+   "options": "Shop"
+  },
+  {
+   "fetch_from": "start_date.tenant_name",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fetch_from": "tenant.lease_start_date",
+   "fieldname": "start_date",
+   "fieldtype": "Link",
+   "label": "Start Date",
+   "options": "Tenant"
+  },
+  {
+   "fetch_from": "tenant.lease_end_date",
+   "fieldname": "expire_date",
+   "fieldtype": "Link",
+   "label": "Expire Date",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "rent_amount",
+   "fieldtype": "Currency",
+   "label": "Rent Amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_renewal_option",
+   "fieldtype": "Check",
+   "label": "Auto Renewal Option"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-11 09:27:53.664064",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Contract",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{airline}-{###}",
+ "creation": "2024-08-08 10:49:36.774589",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "model",
+  "airline",
+  "capacity",
+  "initial_audit_completed"
+ ],
+ "fields": [
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "fieldname": "airline",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Airline",
+   "options": "Airline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Capacity",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "frappe.ui.form.on('Airplane', {\n    refresh: function(frm) {\n        // Check if the user has the Airport Authority Personnel role\n        if (!frappe.user.has_role('Airport Authority Personnel')) {\n            // Hide the \"Initial Audit Completed\" field if the user is not an Airport Authority Personnel\n            frm.set_df_property('initial_audit_completed', 'hidden', 1);\n            frm.set_df_property('initial_audit_completed', 'read_only', 1);\n        } else {\n            // Make it visible and editable for Airport Authority Personnel\n            frm.set_df_property('initial_audit_completed', 'hidden', 0);\n            frm.set_df_property('initial_audit_completed', 'read_only', 0);\n        }\n    }\n});\n",
+   "fieldname": "initial_audit_completed",
+   "fieldtype": "Check",
+   "label": "Initial Audit Completed"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-17 18:42:19.877844",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fleet Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Travel Agent",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Flight Crew Member",
+   "share": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
